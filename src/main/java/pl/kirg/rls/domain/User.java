@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Data
@@ -40,12 +41,16 @@ import javax.validation.constraints.NotNull;
 public class User implements UserDetails
 {
 
+    public static final String USERNAME_PATTERN = "^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$";
+
     @Id
-    @NotNull
-    @Column
-            (name = "username",
-             length = 50,
-             updatable = false
+    @Column(name = "username", length = 20, updatable = false)
+    @Pattern
+            (
+                regexp = USERNAME_PATTERN,
+                message = "Username must have minimum 5 and max 20 chars. Permitted" +
+                          " chars are: lowercase and uppercase letters, digits, dot" +
+                          " and underscore, except dot and underscore at the end and begin."
             )
     private String username;
 
