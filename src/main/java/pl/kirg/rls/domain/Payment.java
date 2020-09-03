@@ -49,7 +49,7 @@ public class Payment
                "id=" + id +
                ", paymentStatus=" + paymentStatus +
                ", responseFromProvider='" + responseFromProvider + '\'' +
-               ", timestamp=" + registered +
+               ", registered=" + registered +
                '}';
     }
 }
