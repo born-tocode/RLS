@@ -26,6 +26,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
 @Entity(name = "CT_orders")
@@ -41,7 +42,8 @@ public class Order
     @Column(name = "order_status")
     private Status orderStatus;
 
-    @Column(name = "message", nullable = true)
+    @Size(max = 500)
+    @Column(name = "message", length = 500)
     private String customerMessage;
 
     @NotNull
